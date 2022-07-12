@@ -17,6 +17,7 @@ public class CreditRepositoryImpl implements CreditRepository {
 
   @Override
   public Flux<CreditDto> getListCredit() {
+
     return this.creditRepositoryMongodb.findAll().map(Convert::entityToDto);
   }
 
@@ -46,4 +47,42 @@ public class CreditRepositoryImpl implements CreditRepository {
   public Mono<Void> deleteById(String id) {
     return this.creditRepositoryMongodb.deleteById(id);
   }
+
+  @Override
+  public Mono<CreditDto> getByIdClientAndIdTypeAndIdAccount(String idClient, String idType, String idAccount) {
+    return this.creditRepositoryMongodb.findByIdClientAndIdTypeAndIdAccount(idClient, idType, idAccount).defaultIfEmpty(new CreditDto());
+  }
+
+  @Override
+  public Mono<CreditDto> getByIdClientAndIdTypeAndIdAccountAndNumberCuent(String idClient, String idType, String idAccount, String numberCuent) {
+    return this.creditRepositoryMongodb.findByIdClientAndIdTypeAndIdAccountAndNumberCuent(idClient, idType, idAccount, numberCuent).defaultIfEmpty(new CreditDto());
+  }
+
+  @Override
+  public Mono<CreditDto> getCreditByNumberCuent(String numberCuent) {
+    return this.creditRepositoryMongodb.findByNumberCuent(numberCuent).defaultIfEmpty(new CreditDto());
+  }
+
+  @Override
+  public Flux<CreditDto> getCreditByIdClient(String idClient) {
+    return this.creditRepositoryMongodb.findByIdClient(idClient);
+  }
+
+  @Override
+  public Flux<CreditDto> getCreditByIdClientAndIdTypeAndIdProductAndCreationDateBetween(String idClient, String idType, String idAccount, String dateStart, String dateEnd) {
+    return this.creditRepositoryMongodb.findByIdClientAndIdTypeAndIdAccountAndCreationDateBetween(idClient, idType, idAccount, dateStart, dateEnd);
+  }
+
+  @Override
+  public Flux<CreditDto> getCreditByNumberCard(String NumberCard) {
+    return this.creditRepositoryMongodb.findByNumberCard(NumberCard).defaultIfEmpty(new CreditDto());
+  }
+
+  @Override
+  public Mono<CreditDto> getCreditByNumberCardAndCategory(String numberCard, int category) {
+    return this.creditRepositoryMongodb.findByNumberCardAndCategory(numberCard, category);
+  }
+
+
+
 }

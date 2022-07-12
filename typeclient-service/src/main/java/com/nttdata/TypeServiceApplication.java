@@ -2,12 +2,14 @@ package com.nttdata;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-public class TypeclientServiceApplication {
+@EnableEurekaClient
+public class TypeServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TypeclientServiceApplication.class, args);
+		SpringApplication.run(TypeServiceApplication.class, args);
 	}
 
 }

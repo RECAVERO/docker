@@ -20,16 +20,15 @@ public class Credit {
   @NotEmpty
   private String idType;
   @NotEmpty
-  private String idProduct;
+  private String idAccount;
   @NotEmpty
   private String numberCuent;
   private String numberCard;
-  @NotEmpty
   private float balance;
-  @NotEmpty
   private int status;
   @NotEmpty
   private int category;
+  private int idMovementNumberCard;
   @NotEmpty
   private String updatedDate;
   @NotEmpty
